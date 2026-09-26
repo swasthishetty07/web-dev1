@@ -1,29 +1,328 @@
+from IPython.display import HTML, display
+
+html_content = """
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swasthi | Developer Profile</title>
+
+    <title>Swasthi | Developer Portfolio</title>
+
+    <style>
+        /* ===== General Styles ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        /* ===== Header ===== */
+
+        header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* ===== Navigation ===== */
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4f46e5;
+        }
+
+        /* ===== Main Container ===== */
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Sections ===== */
+
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        section h2 {
+            color: #4f46e5;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-left: 5px solid #7c3aed;
+            padding-left: 12px;
+        }
+
+        section p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        /* ===== Skills ===== */
+
+        #skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #skills li {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        #skills li:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* ===== Projects ===== */
+
+        #projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #projects h2 {
+            width: 100%;
+        }
+
+        article {
+            flex: 1;
+            min-width: 280px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border: 1px solid #e0e3ff;
+            transition: 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+        }
+
+        article h3 {
+            color: #4f46e5;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        /* ===== Contact Form ===== */
+
+        form {
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Footer ===== */
+
+        footer {
+            background-color: #1e1b4b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* ===== Responsive Design ===== */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 40px 15px;
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 17px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            nav a {
+                width: 200px;
+                text-align: center;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            section h2 {
+                font-size: 24px;
+            }
+
+            #skills ul {
+                justify-content: center;
+            }
+
+            #projects {
+                flex-direction: column;
+            }
+
+            article {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 20px 15px;
+            }
+
+            #skills li {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- ===== Header ===== -->
+
     <header>
         <h1>Swasthi Swaroop Shetty</h1>
+
         <p>AIML Student | Aspiring Developer</p>
 
         <nav>
-            <a href="#about">About Me</a> |
-            <a href="#skills">Skills</a> |
-            <a href="#projects">Projects</a> |
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <hr>
+
+    <!-- ===== Main Content ===== -->
 
     <main>
+
+        <!-- About Section -->
 
         <section id="about">
             <h2>About Me</h2>
@@ -35,6 +334,9 @@
                 I enjoy working on projects and learning new technologies.
             </p>
         </section>
+
+
+        <!-- Skills Section -->
 
         <section id="skills">
             <h2>Skills</h2>
@@ -49,11 +351,16 @@
             </ul>
         </section>
 
+
+        <!-- Projects Section -->
+
         <section id="projects">
+
             <h2>Projects</h2>
 
             <article>
-                <h3>Soil Health Monitoring System</h3>
+                <h3>🌱 Soil Health Monitoring System</h3>
+
                 <p>
                     A project focused on monitoring soil conditions
                     and helping understand soil health.
@@ -61,46 +368,67 @@
             </article>
 
             <article>
-                <h3>Developer Profile Page</h3>
+                <h3>💻 Developer Profile Page</h3>
+
                 <p>
                     A simple personal profile webpage created using
                     HTML as part of my Web Development Week 01 task.
                 </p>
             </article>
+
         </section>
 
+
+        <!-- Contact Section -->
+
         <section id="contact">
+
             <h2>Contact Me</h2>
 
             <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
 
-                <br><br>
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                >
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                >
 
-                <br><br>
-
-                <label for="message">Message:</label>
-                <br>
-                <textarea id="message" name="message" rows="5" cols="30"></textarea>
-
-                <br><br>
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message..."
+                ></textarea>
 
                 <button type="submit">Send Message</button>
+
             </form>
+
         </section>
 
     </main>
 
-    <hr>
+
+    <!-- ===== Footer ===== -->
 
     <footer>
-        <p>&copy; 2026 Swasthi Swaroop Shetty</p>
+        <p>&copy; 2026 Swasthi Swaroop Shetty | Developer Portfolio</p>
     </footer>
 
 </body>
 
 </html>
+"""
+
+display(HTML(html_content))
